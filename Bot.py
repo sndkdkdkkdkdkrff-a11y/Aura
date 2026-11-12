@@ -1,16 +1,15 @@
 import asyncio
 import logging
+import os
 import sys
 from aiogram import Bot, Dispatcher, F, types
 from aiogram.filters import CommandStart
 from google import genai
 from google.genai import types as genai_types
 
-# 1. BotFather'dan olgan tokeningizni yozing:
-TELEGRAM_BOT_TOKEN = "8862107968:AAEqE9-yld4AayfzAkUF8e90YTHAaM6i7a4"
-
-# 2. Google AI Studio'dan olgan API kalitingizni yozing:
-GEMINI_API_KEY = "AQ.Ab8RN6KO4geh4FHw5ZPccC7yQHY_sXlRhyiLXSIt3RlVvmrMjg"
+# Token va API kalit Render'dagi Environment Variables'dan avtomatik olinadi
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 client = genai.Client(api_key=GEMINI_API_KEY)
 bot = Bot(token=TELEGRAM_BOT_TOKEN)
